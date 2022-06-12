@@ -17,12 +17,12 @@ https://api-mainnet.magiceden.dev/v2/collections/bohemia_/
 	// API for price data.
 	axios.get(`https://api-mainnet.magiceden.dev/v2/collections/${process.env.COIN_ID}/`).then(res => {
 		// If we got a valid response
-		if(res.symbol && res.floorPrice) {
-			let currentPrice = res.floorPrice/(10**9) || 0 // Default to zero
-			let priceChange = res.avgPrice24hr/(10**9) || 0 // Default to zero
-		  let symbol = 'SOL';
-      let activityName = `${priceChange.toFixed(2)}% | ${symbol.toUpperCase()}`
-      let nicknameVar =`${(currentPrice).toLocaleString().replace(/,/g,process.env.THOUSAND_SEPARATOR)}${process.env.CURRENCY_SYMBOL }| ${symbol.toUpperCase()}`
+		if(res.data.symbol && res.data.floorPrice) {
+			let currentPrice = res.data.floorPrice/(10**9) || 0 // Default to zero
+			let priceChange = res.data.volumeAll/(10**9) || 0
+      let symbol = 'SOL';
+      let activityName = `${priceChange.toFixed(2)} ${symbol.toUpperCase()}`
+      let nicknameVar =`${(currentPrice).toLocaleString().replace(/,/g,process.env.THOUSAND_SEPARATOR)} ${symbol.toUpperCase()}`
 			if(activityVar%2==0){
       client.user.setPresence({
 				game: {
