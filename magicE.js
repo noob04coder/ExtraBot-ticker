@@ -12,8 +12,6 @@ const duration = moment.duration(client.uptime).format(" D [days], H [hrs], m [m
 }
 
 function getPrices() {
-https://api-mainnet.magiceden.dev/v2/collections/bohemia_/
-
 	// API for price data.
 	axios.get(`https://api-mainnet.magiceden.dev/v2/collections/${process.env.COIN_ID}/`).then(res => {
 		// If we got a valid response
