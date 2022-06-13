@@ -22,7 +22,7 @@ function getPrices() {
 			let priceChange = res.data[0].price_change_percentage_24h || 0 // Default to zero
 		  let symbol = res.data[0].symbol || '?';
       let activityName = `${priceChange.toFixed(2)}% | ${symbol.toUpperCase()}`
-      let nicknameVar =`${(currentPrice).toLocaleString().replace(/,/g,process.env.THOUSAND_SEPARATOR)}${process.env.CURRENCY_SYMBOL }| ${symbol.toUpperCase()}`
+      let nicknameVar =`${process.env.CURRENCY_SYMBOL}${(currentPrice).toLocaleString().replace(/,/g,process.env.THOUSAND_SEPARATOR)} | ${symbol.toUpperCase()}`
 			if(activityVar%2==0){
       client.user.setPresence({
 				game: {
