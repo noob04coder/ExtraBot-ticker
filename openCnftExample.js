@@ -14,13 +14,13 @@ var activityVar=0
 setTimeout(function(){process.exit()},86400000)
 function getPrices() {
         // API for price data.
-        axios.get(`https://publicapi.cnftpredator.tools/collection-info/${process.env.COIN_ID}`).then(res => {
+        axios.get(`https://api.opencnft.io/1/policy/${process.env.COIN_ID}`).then(res => {
                 // If we got a valid response
-                if(res.data.CollectionInfo.floor) {
-      let currentPrice = res.data.CollectionInfo.floor || 0 // Default to zero
+                if(res.data.floor_price) {
+      let currentPrice = res.data.floor_price/10**6 || 0 // Default to zero
                         //let priceChange = res.data.volumeAll/(10**9) || 0
       let symbol = '₳';
-      let activityName = (res.data.CollectionInfo.volumeAllTime).toFixed(2)
+      let activityName = (res.data.total_volume).toFixed(2)
       //let activityName = `${priceChange.toFixed(2)} ${symbol.toUpperCase()}`
       let nicknameVar =`${(currentPrice).toLocaleString().replace(/,/g,process.env.THOUSAND_SEPARATOR)} ${symbol.toUpperCase()} | NAME`
 /*                      if(activityVar%2==0){
